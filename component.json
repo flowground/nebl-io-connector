@@ -1,0 +1,867 @@
+{
+    "title": "Neblio REST API Suite",
+    "description": "APIs for Interacting with NTP1 Tokens & The Neblio Blockchain",
+    "docsUrl": "",
+    "url": "https://api.apis.guru/v2/specs/nebl.io/1.2.1/swagger.json",
+    "envVars": {},
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "https://ntp1node.nebl.io/",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            }
+        }
+    },
+    "triggers": {
+        "startFlow": {
+            "main": "./lib/triggers/startFlow.js",
+            "type": "polling",
+            "title": "Start Flow",
+            "fields": {}
+        }
+    },
+    "actions": {
+        "getAddress": {
+            "main": "./lib/actions/getAddress.js",
+            "title": "Returns address object",
+            "description": "Returns NEBL address object containing information on a specific address",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/getAddress.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "getAddressBalance": {
+            "main": "./lib/actions/getAddressBalance.js",
+            "title": "Returns address balance in sats",
+            "description": "Returns NEBL address balance in satoshis",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/getAddressBalance.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "getAddressTotalReceived": {
+            "main": "./lib/actions/getAddressTotalReceived.js",
+            "title": "Returns total received by address in sats",
+            "description": "Returns total NEBL received by address in satoshis",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/getAddressTotalReceived.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "getAddressTotalSent": {
+            "main": "./lib/actions/getAddressTotalSent.js",
+            "title": "Returns total sent by address in sats",
+            "description": "Returns total NEBL sent by address in satoshis",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/getAddressTotalSent.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "getAddressUnconfirmedBalance": {
+            "main": "./lib/actions/getAddressUnconfirmedBalance.js",
+            "title": "Returns address unconfirmed balance in sats",
+            "description": "Returns NEBL address unconfirmed balance in satoshis",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/getAddressUnconfirmedBalance.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "getAddressUtxos": {
+            "main": "./lib/actions/getAddressUtxos.js",
+            "title": "Returns all UTXOs at a given address",
+            "description": "Returns information on each Unspent Transaction Output contained at an address",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/getAddressUtxos.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "getBlockIndex": {
+            "main": "./lib/actions/getBlockIndex.js",
+            "title": "Returns block hash of block",
+            "description": "Returns the block hash of a block at a given block index",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/getBlockIndex.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "getBlock": {
+            "main": "./lib/actions/getBlock.js",
+            "title": "Returns information regarding a Neblio block",
+            "description": "Returns blockchain data for a given block based upon the block hash",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/getBlock.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "getRawTx": {
+            "main": "./lib/actions/getRawTx.js",
+            "title": "Returns raw transaction hex",
+            "description": "Returns raw transaction hex representing a NEBL transaction",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/getRawTx.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "getStatus": {
+            "main": "./lib/actions/getStatus.js",
+            "title": "Utility API for calling several blockchain node functions",
+            "description": "Utility API for calling several blockchain node functions - getInfo, getDifficulty, getBestBlockHash, getLastBlockHash",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/getStatus.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "getSync": {
+            "main": "./lib/actions/getSync.js",
+            "title": "Get node sync status",
+            "description": "Returns information on the node's sync progress",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/getSync.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "sendTx": {
+            "main": "./lib/actions/sendTx.js",
+            "title": "Broadcasts a signed raw transaction to the network (not NTP1 specific)",
+            "description": "Broadcasts a signed raw transaction to the network. If successful returns the txid of the broadcast trasnaction.\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/sendTx.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "getTx": {
+            "main": "./lib/actions/getTx.js",
+            "title": "Returns transaction object",
+            "description": "Returns NEBL transaction object representing a NEBL transaction",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/getTx.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "getTxs": {
+            "main": "./lib/actions/getTxs.js",
+            "title": "Get transactions by block or address",
+            "description": "Returns all transactions by block or address",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/getTxs.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "getAddressInfo": {
+            "main": "./lib/actions/getAddressInfo.js",
+            "title": "Information On a Neblio Address",
+            "description": "Returns both NEBL and NTP1 token UTXOs held at the given address.\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/getAddressInfo.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "broadcastTx": {
+            "main": "./lib/actions/broadcastTx.js",
+            "title": "Broadcasts a signed raw transaction to the network",
+            "description": "Broadcasts a signed raw transaction to the network. If successful returns the txid of the broadcast trasnaction.\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/broadcastTx.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "burnToken": {
+            "main": "./lib/actions/burnToken.js",
+            "title": "Builds a transaction that burns an NTP1 Token",
+            "description": "Builds an unsigned raw transaction that burns an NTP1 token on the Neblio blockchain.\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/burnToken.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "issueToken": {
+            "main": "./lib/actions/issueToken.js",
+            "title": "Builds a transaction that issues a new NTP1 Token",
+            "description": "Builds an unsigned raw transaction that issues a new NTP1 token on the Neblio blockchain.\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/issueToken.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "sendToken": {
+            "main": "./lib/actions/sendToken.js",
+            "title": "Builds a transaction that sends an NTP1 Token",
+            "description": "Builds an unsigned raw transaction that sends an NTP1 token on the Neblio blockchain.\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/sendToken.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "getTokenHolders": {
+            "main": "./lib/actions/getTokenHolders.js",
+            "title": "Get Addresses Holding a Token",
+            "description": "Returns the the the addresses holding a token and how many tokens are held\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/getTokenHolders.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "getTokenId": {
+            "main": "./lib/actions/getTokenId.js",
+            "title": "Returns the tokenId representing a token",
+            "description": "Translates a token symbol to a tokenId if a token exists with that symbol on the network\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/getTokenId.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "getTokenMetadataOfIssuance": {
+            "main": "./lib/actions/getTokenMetadataOfIssuance.js",
+            "title": "Get Issuance Metadata of Token",
+            "description": "Returns the metadata associated with a token at time of issuance.\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/getTokenMetadataOfIssuance.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "getTokenMetadataOfUtxo": {
+            "main": "./lib/actions/getTokenMetadataOfUtxo.js",
+            "title": "Get UTXO Metadata of Token",
+            "description": "Returns the metadata associated with a token for that specific utxo instead of the issuance transaction.\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/getTokenMetadataOfUtxo.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "getTransactionInfo": {
+            "main": "./lib/actions/getTransactionInfo.js",
+            "title": "Information On an NTP1 Transaction",
+            "description": "Returns detailed information regarding an NTP1 transaction.\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/getTransactionInfo.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "testnet_getFaucet": {
+            "main": "./lib/actions/testnet_getFaucet.js",
+            "title": "Withdraws testnet NEBL to the specified address",
+            "description": "Withdraw testnet NEBL to your Neblio Testnet address. By default amount is 1500000000 or 15 NEBL and has a max of 50 NEBL. Only 2 withdrawals allowed per 24 hour period.\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/testnet_getFaucet.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "testnet_getAddress": {
+            "main": "./lib/actions/testnet_getAddress.js",
+            "title": "Returns address object",
+            "description": "Returns NEBL address object containing information on a specific address",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/testnet_getAddress.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "testnet_getAddressBalance": {
+            "main": "./lib/actions/testnet_getAddressBalance.js",
+            "title": "Returns address balance in sats",
+            "description": "Returns NEBL address balance in satoshis",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/testnet_getAddressBalance.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "testnet_getAddressTotalReceived": {
+            "main": "./lib/actions/testnet_getAddressTotalReceived.js",
+            "title": "Returns total received by address in sats",
+            "description": "Returns total NEBL received by address in satoshis",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/testnet_getAddressTotalReceived.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "testnet_getAddressTotalSent": {
+            "main": "./lib/actions/testnet_getAddressTotalSent.js",
+            "title": "Returns total sent by address in sats",
+            "description": "Returns total NEBL sent by address in satoshis",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/testnet_getAddressTotalSent.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "testnet_getAddressUnconfirmedBalance": {
+            "main": "./lib/actions/testnet_getAddressUnconfirmedBalance.js",
+            "title": "Returns address unconfirmed balance in sats",
+            "description": "Returns NEBL address unconfirmed balance in satoshis",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/testnet_getAddressUnconfirmedBalance.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "testnet_getAddressUtxos": {
+            "main": "./lib/actions/testnet_getAddressUtxos.js",
+            "title": "Returns all UTXOs at a given address",
+            "description": "Returns information on each Unspent Transaction Output contained at an address",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/testnet_getAddressUtxos.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "testnet_getBlockIndex": {
+            "main": "./lib/actions/testnet_getBlockIndex.js",
+            "title": "Returns block hash of block",
+            "description": "Returns the block hash of a block at a given block index",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/testnet_getBlockIndex.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "testnet_getBlock": {
+            "main": "./lib/actions/testnet_getBlock.js",
+            "title": "Returns information regarding a Neblio block",
+            "description": "Returns blockchain data for a given block based upon the block hash",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/testnet_getBlock.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "testnet_getRawTx": {
+            "main": "./lib/actions/testnet_getRawTx.js",
+            "title": "Returns raw transaction hex",
+            "description": "Returns raw transaction hex representing a NEBL transaction",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/testnet_getRawTx.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "testnet_getStatus": {
+            "main": "./lib/actions/testnet_getStatus.js",
+            "title": "Utility API for calling several blockchain node functions",
+            "description": "Utility API for calling several blockchain node functions - getInfo, getDifficulty, getBestBlockHash, getLastBlockHash",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/testnet_getStatus.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "testnet_getSync": {
+            "main": "./lib/actions/testnet_getSync.js",
+            "title": "Get node sync status",
+            "description": "Returns information on the node's sync progress",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/testnet_getSync.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "testnet_sendTx": {
+            "main": "./lib/actions/testnet_sendTx.js",
+            "title": "Broadcasts a signed raw transaction to the network (not NTP1 specific)",
+            "description": "Broadcasts a signed raw transaction to the network. If successful returns the txid of the broadcast trasnaction.\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/testnet_sendTx.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "testnet_getTx": {
+            "main": "./lib/actions/testnet_getTx.js",
+            "title": "Returns transaction object",
+            "description": "Returns NEBL transaction object representing a NEBL transaction",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/testnet_getTx.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "testnet_getTxs": {
+            "main": "./lib/actions/testnet_getTxs.js",
+            "title": "Get transactions by block or address",
+            "description": "Returns all transactions by block or address",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/testnet_getTxs.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "testnet_getAddressInfo": {
+            "main": "./lib/actions/testnet_getAddressInfo.js",
+            "title": "Information On a Neblio Address",
+            "description": "Returns both NEBL and NTP1 token UTXOs held at the given address.\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/testnet_getAddressInfo.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "testnet_broadcastTx": {
+            "main": "./lib/actions/testnet_broadcastTx.js",
+            "title": "Broadcasts a signed raw transaction to the network",
+            "description": "Broadcasts a signed raw transaction to the network. If successful returns the txid of the broadcast trasnaction.\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/testnet_broadcastTx.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "testnet_burnToken": {
+            "main": "./lib/actions/testnet_burnToken.js",
+            "title": "Builds a transaction that burns an NTP1 Token",
+            "description": "Builds an unsigned raw transaction that burns an NTP1 token on the Neblio blockchain.\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/testnet_burnToken.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "testnet_issueToken": {
+            "main": "./lib/actions/testnet_issueToken.js",
+            "title": "Builds a transaction that issues a new NTP1 Token",
+            "description": "Builds an unsigned raw transaction that issues a new NTP1 token on the Neblio blockchain.\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/testnet_issueToken.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "testnet_sendToken": {
+            "main": "./lib/actions/testnet_sendToken.js",
+            "title": "Builds a transaction that sends an NTP1 Token",
+            "description": "Builds an unsigned raw transaction that sends an NTP1 token on the Neblio blockchain.\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/testnet_sendToken.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "testnet_getTokenHolders": {
+            "main": "./lib/actions/testnet_getTokenHolders.js",
+            "title": "Get Addresses Holding a Token",
+            "description": "Returns the the the addresses holding a token and how many tokens are held\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/testnet_getTokenHolders.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "testnet_getTokenId": {
+            "main": "./lib/actions/testnet_getTokenId.js",
+            "title": "Returns the tokenId representing a token",
+            "description": "Translates a token symbol to a tokenId if a token exists with that symbol on the network\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/testnet_getTokenId.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "testnet_getTokenMetadataOfIssuance": {
+            "main": "./lib/actions/testnet_getTokenMetadataOfIssuance.js",
+            "title": "Get Issuance Metadata of Token",
+            "description": "Returns the metadata associated with a token at time of issuance.\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/testnet_getTokenMetadataOfIssuance.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "testnet_getTokenMetadataOfUtxo": {
+            "main": "./lib/actions/testnet_getTokenMetadataOfUtxo.js",
+            "title": "Get UTXO Metadata of Token",
+            "description": "Returns the metadata associated with a token for that specific utxo instead of the issuance transaction.\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/testnet_getTokenMetadataOfUtxo.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "testnet_getTransactionInfo": {
+            "main": "./lib/actions/testnet_getTransactionInfo.js",
+            "title": "Information On an NTP1 Transaction",
+            "description": "Returns detailed information regarding an NTP1 transaction.\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/testnet_getTransactionInfo.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}

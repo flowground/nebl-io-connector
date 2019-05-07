@@ -1,0 +1,9 @@
+{
+    "type": "object",
+    "properties": {
+        "blockhash": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

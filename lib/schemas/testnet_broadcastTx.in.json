@@ -1,0 +1,17 @@
+{
+    "type": "object",
+    "properties": {
+        "requestBody": {
+            "properties": {
+                "txHex": {
+                    "description": "Signed raw tx hex to broadcast",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "txHex"
+            ],
+            "type": "object"
+        }
+    }
+}

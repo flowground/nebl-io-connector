@@ -1,0 +1,17 @@
+{
+    "type": "object",
+    "properties": {
+        "address": {
+            "required": false,
+            "type": "string"
+        },
+        "block": {
+            "required": false,
+            "type": "string"
+        },
+        "pageNum": {
+            "required": false,
+            "type": "number"
+        }
+    }
+}

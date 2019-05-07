@@ -1,0 +1,62 @@
+{
+    "type": "object",
+    "properties": {
+        "requestBody": {
+            "properties": {
+                "burn": {
+                    "description": "Array of objects representing tokens to be burned",
+                    "items": {
+                        "properties": {
+                            "amount": {
+                                "description": "Amount of tokens to burn",
+                                "type": "number"
+                            },
+                            "tokenId": {
+                                "description": "Unique token id we are burning",
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "type": "array"
+                },
+                "fee": {
+                    "description": "Fee in satoshi to include in the issuance transaction min 10000 (0.0001 NEBL)",
+                    "type": "number"
+                },
+                "from": {
+                    "description": "Array of addresses to send the token from",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "transfer": {
+                    "items": {
+                        "properties": {
+                            "address": {
+                                "description": "Address to transfer tokens to",
+                                "type": "string"
+                            },
+                            "amount": {
+                                "description": "Number of tokens to send",
+                                "type": "number"
+                            },
+                            "tokenId": {
+                                "description": "ID of token we are sending",
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "type": "array"
+                }
+            },
+            "required": [
+                "fee",
+                "burn"
+            ],
+            "type": "object"
+        }
+    }
+}

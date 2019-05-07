@@ -1,0 +1,13 @@
+{
+    "type": "object",
+    "properties": {
+        "address": {
+            "required": true,
+            "type": "string"
+        },
+        "amount": {
+            "required": false,
+            "type": "number"
+        }
+    }
+}

@@ -1,0 +1,217 @@
+{
+    "type": "object",
+    "properties": {
+        "requestBody": {
+            "properties": {
+                "amount": {
+                    "description": "Number of tokens to issue",
+                    "type": "number"
+                },
+                "divisibility": {
+                    "description": "Number of decimal places the token should be divisble by (0-7)",
+                    "type": "number"
+                },
+                "fee": {
+                    "description": "Fee in satoshi to include in the issuance transaction min 1000000000 (10 NEBL)",
+                    "type": "number"
+                },
+                "flags": {
+                    "description": "Object representing flags that potentialy modify this transaction",
+                    "properties": {
+                        "splitChange": {
+                            "description": "If true change will be split into 2 outputs, one for NEBL change and one for NTP1 change (recommended)",
+                            "type": "boolean"
+                        }
+                    },
+                    "type": "object"
+                },
+                "issueAddress": {
+                    "description": "Address issuing the token",
+                    "type": "string"
+                },
+                "metadata": {
+                    "description": "Object representing all metadata at token issuance",
+                    "properties": {
+                        "description": {
+                            "description": "Long name or description of token (ex. Nibble)",
+                            "type": "string"
+                        },
+                        "encryptions": {
+                            "description": "Array of encryption instruction objects for encrypting userData",
+                            "items": {
+                                "properties": {
+                                    "format": {
+                                        "description": "key format (pem or der)",
+                                        "type": "string"
+                                    },
+                                    "key": {
+                                        "description": "userData key to encrypt",
+                                        "type": "string"
+                                    },
+                                    "pubkey": {
+                                        "description": "RSA public key used for encryption",
+                                        "type": "string"
+                                    },
+                                    "type": {
+                                        "description": "pkcs1 or pkcs8",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "issuer": {
+                            "description": "Name of token issuer",
+                            "type": "string"
+                        },
+                        "rules": {
+                            "description": "Object describing token rules",
+                            "properties": {
+                                "expiration": {
+                                    "description": "Object describing expiration rules of the token",
+                                    "properties": {
+                                        "locked": {
+                                            "description": "Whether this rule can be modified in future transactions",
+                                            "type": "boolean"
+                                        },
+                                        "validUntil": {
+                                            "description": "Blockheight at wh",
+                                            "type": "number"
+                                        }
+                                    },
+                                    "type": "object"
+                                },
+                                "fees": {
+                                    "properties": {
+                                        "items": {
+                                            "description": "Array of objects describing fee rules",
+                                            "items": {
+                                                "properties": {
+                                                    "address": {
+                                                        "description": "Address fee is auto sent to",
+                                                        "type": "string"
+                                                    },
+                                                    "tokenId": {
+                                                        "description": "How fee should be paid, either with a tokenId, or with NEBL if null",
+                                                        "type": "string"
+                                                    },
+                                                    "value": {
+                                                        "description": "Amount of NTP1 token, or NEBL (in satoshi) to pay as fee",
+                                                        "type": "string"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            },
+                                            "type": "array"
+                                        },
+                                        "locked": {
+                                            "description": "Whether this rule can be modified in future transactions",
+                                            "type": "boolean"
+                                        }
+                                    },
+                                    "type": "object"
+                                },
+                                "holders": {
+                                    "description": "Array of objects describing what addresses can hold the token",
+                                    "items": {
+                                        "properties": {
+                                            "address": {
+                                                "description": "Address that can hold the token",
+                                                "type": "string"
+                                            },
+                                            "locked": {
+                                                "description": "Whether this rule can be modified in future transactions",
+                                                "type": "boolean"
+                                            }
+                                        },
+                                        "type": "object"
+                                    },
+                                    "type": "array"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "tokenName": {
+                            "description": "Token Symbol it will be identified by (ex. NIBBL)",
+                            "type": "string"
+                        },
+                        "urls": {
+                            "items": {
+                                "properties": {
+                                    "dataHash": {
+                                        "description": "Hash of data at the URL, used for verification",
+                                        "type": "string"
+                                    },
+                                    "mimeType": {
+                                        "description": "mimeType of URL content",
+                                        "type": "string"
+                                    },
+                                    "name": {
+                                        "description": "Name of the URL",
+                                        "type": "string"
+                                    },
+                                    "url": {
+                                        "description": "Actual URL",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "userData": {
+                            "description": "Metadata set by user on token",
+                            "properties": {
+                                "meta": {
+                                    "items": {
+                                        "properties": {
+                                            "key": {
+                                                "type": "string"
+                                            },
+                                            "value": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "type": "object"
+                                    },
+                                    "type": "array"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "type": "object"
+                },
+                "reissuable": {
+                    "description": "whether the token should be reissuable",
+                    "type": "boolean"
+                },
+                "transfer": {
+                    "items": {
+                        "properties": {
+                            "address": {
+                                "description": "Address to send the amount of issued tokens to",
+                                "type": "string"
+                            },
+                            "amount": {
+                                "type": "number"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "type": "array"
+                }
+            },
+            "required": [
+                "issueAddress",
+                "amount",
+                "divisibility",
+                "fee",
+                "reissuable",
+                "transfer"
+            ],
+            "type": "object"
+        }
+    }
+}

@@ -1,0 +1,13 @@
+{
+    "type": "object",
+    "properties": {
+        "tokenid": {
+            "required": true,
+            "type": "string"
+        },
+        "utxo": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

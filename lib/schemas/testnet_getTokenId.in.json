@@ -1,0 +1,9 @@
+{
+    "type": "object",
+    "properties": {
+        "tokensymbol": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}
